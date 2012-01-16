@@ -5,11 +5,11 @@
 #
 
 # Maximum number of open files (for ulimit -n)
-NFILES=131072
+NFILES=<%= node['varnish']['nfiles'] %>
 
 # Default varnish instance name is the local nodename.  Can be overridden with
 # the -n switch, to have more instances on a single server.
-INSTANCE=$(uname -n)
+INSTANCE=<%= node['varnish']['instance'] %>
 
 # This file contains 4 alternatives, please use only one.
 
@@ -18,11 +18,11 @@ INSTANCE=$(uname -n)
 # Listen on port 6081, administration on localhost:6082, and forward to
 # content server on localhost:8080.  Use a fixed-size cache file.
 #
-DAEMON_OPTS="-a :6081 \
-             -T localhost:6082 \
-             -b localhost:8080 \
-             -u varnish -g varnish \
-             -s file,/var/lib/varnish/$INSTANCE/varnish_storage.bin,1G"
+DAEMON_OPTS="-a <%= node['varnish']['listen']['host'] %>:<%= node['varnish']['listen']['port'] %> \
+             -T <%= node['varnish']['admin']['host'] %>:<%= node['varnish']['admin']['port'] %> \
+             -b <%= node['varnish']['backend']['host'] %>:<%= node['varnish']['backend']['port'] %> \
+             -u <%= node['varnish']['user'] %> -g <%= node['varnish']['group'] %> \
+             -s <%= node['varnish']['storage'] %>"
 
 
 ## Alternative 2, Configuration with VCL
