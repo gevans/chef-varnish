@@ -10,6 +10,16 @@ recipe "varnish", "Installs and configures varnish"
   supports os
 end
 
+attribute "varnish/dir",
+  :display_name => "Varnish Configuration Directory",
+  :description => "Location of the varnish configuration directory",
+  :default => "/etc/varnish"
+
+attribute "varnish/default",
+  :display_name => "Varnish Default File",
+  :description => "Location of the default file that controls the varnish init script on Debian/Ubuntu systems",
+  :default => "/etc/default/varnish"
+
 attribute "varnish/nfiles",
   :display_name => "Varnish Open File Descriptors Limit",
   :description => "Maximum number of open files (for ulimit -n)",

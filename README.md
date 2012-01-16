@@ -34,6 +34,29 @@ Attributes
 * `node['varnish']['default']` - location of the `default` file that
   controls the varnish init script on Debian/Ubuntu systems.
 
+* `node['varnish']['nfiles']` - Maximum number of open files (for ulimit -n)
+
+* `node['varnish']['instance']` - Default varnish instance name is the local nodename
+
+* `node['varnish']['listen']['host']` - Host address that Varnish listens for connections on
+
+* `node['varnish']['listen']['port']` - Port that Varnish listens for connections on
+
+* `node['varnish']['admin']['host']` - Host address that Varnish admin interface listens on
+
+* `node['varnish']['admin']['port']` - Port that Varnish admin interface listens on
+
+* `node['varnish']['backend']['host']` - Backend address of content server that Varnish serves content from
+
+* `node['varnish']['backend']['port']` - Backend port of content server that Varnish serves content from
+
+* `node['varnish']['user']` - User Varnish runs as
+
+* `node['varnish']['group']` - Group Varnish runs as
+
+* `node['varnish']['storage']` - Storage type parameters that specify how Varnish caches objects
+
+
 Recipes
 =======
 
